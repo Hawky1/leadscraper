@@ -42,12 +42,20 @@ const Landing: React.FC = () => {
                         ))}
                     </div>
 
-                    <button
-                        onClick={() => navigate('/login')}
-                        className="bg-[#1B2559] text-white px-7 py-3 rounded-2xl font-bold text-sm hover:scale-105 active:scale-95 transition-all shadow-xl shadow-black/10"
-                    >
-                        Try it for free
-                    </button>
+                    <div className="flex items-center gap-3">
+                        <button
+                            onClick={() => navigate('/login')}
+                            className="px-7 py-3 border border-[#E9EDF7] text-[#1B2559] font-bold text-sm rounded-2xl hover:bg-[#F4F7FE] transition-all"
+                        >
+                            Login
+                        </button>
+                        <button
+                            onClick={() => navigate('/login')}
+                            className="bg-[#1B2559] text-white px-7 py-3 rounded-2xl font-bold text-sm hover:scale-105 active:scale-95 transition-all shadow-xl shadow-black/10"
+                        >
+                            Try it for free
+                        </button>
+                    </div>
                 </div>
             </nav>
 
