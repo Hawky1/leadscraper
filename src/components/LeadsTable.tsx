@@ -70,13 +70,13 @@ const LeadsTable: React.FC<LeadsTableProps> = ({ searchId }) => {
         with_website: leads?.filter(l => l.has_website).length ?? 0,
     }
 
-    if (isLoading) return <div className="p-12 text-center text-[#707EAE] font-bold animate-pulse">Syncing lead intelligence...</div>
+    if (isLoading) return <div className="p-12 text-center text-gray-400 font-bold animate-pulse">Syncing lead intelligence...</div>
 
     if (!leads?.length) return (
         <div className="p-12 text-center">
-            <AlertCircle className="h-12 w-12 text-[#A3AED0] mx-auto mb-4" />
-            <p className="text-xl font-bold">No Leads Yet</p>
-            <p className="text-sm text-[#707EAE] mt-1 font-medium">Start a new run to hunt leads, or select another run.</p>
+            <AlertCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+            <p className="text-xl font-bold text-white">No Leads Yet</p>
+            <p className="text-sm text-gray-500 mt-1 font-medium">Start a new run to hunt leads, or select another run.</p>
         </div>
     )
 
@@ -91,8 +91,8 @@ const LeadsTable: React.FC<LeadsTableProps> = ({ searchId }) => {
                         className={cn(
                             'px-4 py-2 rounded-xl text-sm font-bold transition-all',
                             activeFilter === tab.key
-                                ? 'bg-[#3965FF] text-white shadow-md shadow-[#3965FF]/25'
-                                : 'bg-[#F4F7FE] text-[#707EAE] hover:bg-[#E9EDF7]'
+                                ? 'bg-[#3965FF] text-white shadow-md shadow-[#3965FF]/25 border border-[#3965FF]/50'
+                                : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/5'
                         )}
                     >
                         {tab.label}
@@ -100,7 +100,7 @@ const LeadsTable: React.FC<LeadsTableProps> = ({ searchId }) => {
                             'ml-2 text-xs px-1.5 py-0.5 rounded-full',
                             activeFilter === tab.key
                                 ? 'bg-white/20 text-white'
-                                : 'bg-white text-[#707EAE]'
+                                : 'bg-white/10 text-gray-400'
                         )}>
                             {counts[tab.key]}
                         </span>
@@ -111,39 +111,39 @@ const LeadsTable: React.FC<LeadsTableProps> = ({ searchId }) => {
             {/* Table */}
             {filteredLeads.length === 0 ? (
                 <div className="p-8 text-center">
-                    <p className="text-[#707EAE] font-medium">No leads match this filter.</p>
+                    <p className="text-gray-400 font-medium">No leads match this filter.</p>
                 </div>
             ) : (
                 <div className="overflow-x-auto -mx-2">
                     <table className="w-full text-left">
                         <thead>
-                            <tr className="border-b border-[#F4F7FE]">
-                                <th className="px-4 py-3 text-xs font-bold text-[#A3AED0] uppercase tracking-wider">Business</th>
-                                <th className="px-4 py-3 text-xs font-bold text-[#A3AED0] uppercase tracking-wider">Phone</th>
-                                <th className="px-4 py-3 text-xs font-bold text-[#A3AED0] uppercase tracking-wider">Website</th>
-                                <th className="px-4 py-3 text-xs font-bold text-[#A3AED0] uppercase tracking-wider">Rating</th>
+                            <tr className="border-b border-white/5">
+                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Business</th>
+                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Phone</th>
+                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Website</th>
+                                <th className="px-4 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Rating</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-[#F4F7FE]">
+                        <tbody className="divide-y divide-white/5">
                             {filteredLeads.map((lead) => (
-                                <tr key={lead.id} className="hover:bg-[#F4F7FE]/50 transition-colors">
+                                <tr key={lead.id} className="hover:bg-white/5 transition-colors">
                                     <td className="px-4 py-4">
-                                        <p className="text-sm font-bold text-[#1B2559]">{lead.business_name}</p>
-                                        <p className="text-xs text-[#707EAE] mt-0.5 truncate max-w-[220px]">{lead.address ?? '—'}</p>
+                                        <p className="text-sm font-bold text-white">{lead.business_name}</p>
+                                        <p className="text-xs text-gray-400 mt-0.5 truncate max-w-[220px]">{lead.address ?? '—'}</p>
                                     </td>
                                     <td className="px-4 py-4">
                                         {lead.phone ? (
-                                            <a href={`tel:${lead.phone}`} className="flex items-center gap-1.5 text-sm text-[#3965FF] font-medium hover:underline">
+                                            <a href={`tel:${lead.phone}`} className="flex items-center gap-1.5 text-sm text-[#3965FF] font-medium hover:text-white transition-colors">
                                                 <Phone size={14} />
                                                 {lead.phone}
                                             </a>
                                         ) : (
-                                            <span className="text-xs text-[#A3AED0]">—</span>
+                                            <span className="text-xs text-gray-500">—</span>
                                         )}
                                     </td>
                                     <td className="px-4 py-4">
                                         {lead.has_website ? (
-                                            <a href={lead.website_url ?? '#'} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#34D399] font-medium hover:underline">
+                                            <a href={lead.website_url ?? '#'} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-[#34D399] font-medium hover:text-white transition-colors">
                                                 <Globe size={14} />
                                                 Visit
                                             </a>
@@ -161,7 +161,7 @@ const LeadsTable: React.FC<LeadsTableProps> = ({ searchId }) => {
                                                 {lead.rating}
                                             </span>
                                         ) : (
-                                            <span className="text-xs text-[#A3AED0]">—</span>
+                                            <span className="text-xs text-gray-500">—</span>
                                         )}
                                     </td>
                                 </tr>

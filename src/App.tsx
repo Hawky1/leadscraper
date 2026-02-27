@@ -12,6 +12,10 @@ import LeadGeneration from "./pages/LeadGeneration";
 import Roadmap from "./pages/Roadmap";
 import ComingSoon from "./pages/ComingSoon";
 import NotFound from "./pages/NotFound";
+import WebsitePromptBuilder from "./pages/WebsitePromptBuilder";
+import SeoAnalyzer from "./pages/SeoAnalyzer";
+import AiInfrastructure from "./pages/AiInfrastructure";
+import AppBuilderPrompt from "./pages/AppBuilderPrompt";
 
 const queryClient = new QueryClient();
 
@@ -29,12 +33,13 @@ const App = () => (
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/lead-gen" element={<LeadGeneration />} />
               <Route path="/roadmap" element={<Roadmap />} />
-              <Route path="/prompt-builder" element={<ComingSoon />} />
+              <Route path="/prompt-builder" element={<WebsitePromptBuilder />} />
+              <Route path="/seo-analyzer" element={<SeoAnalyzer />} />
               <Route path="/objection-handling" element={<ComingSoon />} />
-              <Route path="/gpts" element={<ComingSoon />} />
+              <Route path="/gpts" element={<AiInfrastructure />} />
               <Route path="/voice-agent" element={<ComingSoon />} />
               <Route path="/sora" element={<ComingSoon />} />
-              <Route path="/app-builder" element={<ComingSoon />} />
+              <Route path="/app-builder" element={<AppBuilderPrompt />} />
               <Route path="/help" element={<ComingSoon />} />
               <Route path="/settings" element={<ComingSoon />} />
             </Route>

@@ -11,17 +11,17 @@ const ComingSoon: React.FC = () => {
                 {/* Visual Ornament */}
                 <div className="relative inline-block">
                     <div className="absolute inset-0 bg-gradient-to-tr from-[#3965FF] to-[#0031E3] blur-3xl opacity-20 animate-pulse" />
-                    <div className="relative bg-white p-8 rounded-[2.5rem] shadow-xl border border-white flex items-center justify-center">
+                    <div className="relative bg-[#0A0F1C]/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-xl border border-white/10 flex items-center justify-center">
                         <Timer className="h-16 w-16 text-[#3965FF]" />
                     </div>
-                    <div className="absolute -top-4 -right-4 h-12 w-12 bg-black rounded-2xl flex items-center justify-center shadow-lg animate-bounce">
+                    <div className="absolute -top-4 -right-4 h-12 w-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center shadow-lg animate-bounce">
                         <Sparkles className="h-6 w-6 text-white" />
                     </div>
                 </div>
 
                 <div className="space-y-4">
-                    <h2 className="text-4xl font-extrabold text-[#1B2559] tracking-tight">Feature Coming Soon</h2>
-                    <p className="text-[#707EAE] text-lg font-medium max-w-md mx-auto leading-relaxed">
+                    <h2 className="text-4xl font-extrabold text-white tracking-tight">Feature Coming Soon</h2>
+                    <p className="text-gray-400 text-lg font-medium max-w-md mx-auto leading-relaxed">
                         We're currently polishing the AI engine for this module. Our team is working hard to bring you the best experience!
                     </p>
                 </div>
@@ -29,11 +29,11 @@ const ComingSoon: React.FC = () => {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                     <button
                         onClick={() => navigate(-1)}
-                        className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white border border-[#E9EDF7] text-[#1B2559] font-bold rounded-2xl hover:bg-[#F4F7FE] transition-all shadow-sm"
+                        className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl hover:bg-white/10 transition-all shadow-sm"
                     >
                         <ArrowLeft size={18} /> Go Back
                     </button>
-                    <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-[#1B2559] text-white font-bold rounded-2xl hover:bg-[#0B1539] transition-all shadow-xl shadow-black/10">
+                    <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-[#3965FF] text-white font-bold rounded-2xl hover:bg-[#3965FF]/80 transition-all shadow-xl shadow-[#3965FF]/20">
                         <Bell size={18} /> Notify Me
                     </button>
                 </div>
@@ -50,12 +50,12 @@ const ComingSoon: React.FC = () => {
 }
 
 const ProgressStage = ({ icon, label, status }: { icon: React.ReactNode, label: string, status: string }) => (
-    <div className="bg-white/50 border border-white p-4 rounded-2xl text-left">
+    <div className="bg-white/5 border border-white/10 p-4 rounded-2xl text-left">
         <div className="flex items-center gap-2 text-[#3965FF] mb-1">
             {icon}
             <span className="text-[10px] font-extrabold uppercase tracking-widest">{label}</span>
         </div>
-        <p className="text-sm font-bold text-[#1B2559]">{status}</p>
+        <p className="text-sm font-bold text-white">{status}</p>
     </div>
 )
 

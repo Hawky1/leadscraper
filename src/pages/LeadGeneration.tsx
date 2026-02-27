@@ -206,10 +206,10 @@ const LeadGeneration: React.FC = () => {
 
     return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 bg-white p-8 rounded-[2.5rem] shadow-sm border border-white">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 bg-[#0A0F1C]/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-sm border border-white/10">
                 <div>
-                    <h2 className="text-2xl font-bold tracking-tight text-[#1B2559]">Lead Generation Hub</h2>
-                    <p className="text-[#707EAE] mt-1 font-medium">Start a new automated hunt or manage your existing lead runs.</p>
+                    <h2 className="text-2xl font-bold tracking-tight text-white">Lead Generation Hub</h2>
+                    <p className="text-gray-400 mt-1 font-medium">Start a new automated hunt or manage your existing lead runs.</p>
                 </div>
                 <NewSearchModal onSuccess={(id) => {
                     refetch()
@@ -220,10 +220,10 @@ const LeadGeneration: React.FC = () => {
             <div className="grid grid-cols-12 gap-8">
                 {/* Search History */}
                 <div className="col-span-12 lg:col-span-4">
-                    <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-white h-full">
+                    <div className="bg-[#0A0F1C]/80 backdrop-blur-xl rounded-[2.5rem] p-8 shadow-sm border border-white/10 h-full">
                         <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-xl font-bold">Recent Runs</h3>
-                            <span className="text-xs font-semibold text-[#A3AED0] bg-[#F4F7FE] px-2.5 py-1 rounded-full">
+                            <h3 className="text-xl font-bold text-white">Recent Runs</h3>
+                            <span className="text-xs font-semibold text-gray-300 bg-white/10 border border-white/10 px-2.5 py-1 rounded-full">
                                 {displayedSearches.length} runs
                             </span>
                         </div>
@@ -231,20 +231,20 @@ const LeadGeneration: React.FC = () => {
                         {/* Search + Sort row */}
                         <div className="flex gap-2 mb-5">
                             <div className="relative flex-1">
-                                <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#A3AED0]" />
+                                <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
                                 <input
                                     type="text"
                                     placeholder="Search runs..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl bg-[#F4F7FE] border-0 outline-none focus:ring-2 focus:ring-[#3965FF]/20 placeholder:text-[#A3AED0] font-medium transition-all"
+                                    className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:ring-2 focus:ring-[#3965FF]/20 placeholder:text-gray-500 font-medium transition-all"
                                 />
                             </div>
                             {/* Sort dropdown */}
                             <div className="relative">
                                 <button
                                     onClick={() => setShowSortDropdown(!showSortDropdown)}
-                                    className="h-full px-3 rounded-xl bg-[#F4F7FE] flex items-center gap-1.5 text-[#707EAE] hover:bg-[#E8EDFB] transition-colors"
+                                    className="h-full px-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-1.5 text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
                                     title="Sort by"
                                 >
                                     <SlidersHorizontal size={15} />
@@ -253,14 +253,14 @@ const LeadGeneration: React.FC = () => {
                                 {showSortDropdown && (
                                     <>
                                         <div className="fixed inset-0 z-20" onClick={() => setShowSortDropdown(false)} />
-                                        <div className="absolute right-0 top-[calc(100%+6px)] z-30 bg-white rounded-xl shadow-lg border border-[#F0F0F5] py-1.5 min-w-[160px] animate-in fade-in slide-in-from-top-2 duration-200">
+                                        <div className="absolute right-0 top-[calc(100%+6px)] z-30 bg-[#0A0F1C] border border-white/10 rounded-xl shadow-lg py-1.5 min-w-[160px] animate-in fade-in slide-in-from-top-2 duration-200">
                                             {SORT_OPTIONS.map((opt) => (
                                                 <button
                                                     key={opt.value}
                                                     onClick={() => { setSortBy(opt.value); setShowSortDropdown(false) }}
                                                     className={`w-full text-left px-4 py-2 text-sm font-medium transition-colors ${sortBy === opt.value
-                                                        ? 'text-[#3965FF] bg-[#F4F7FE]'
-                                                        : 'text-[#4A5568] hover:bg-[#F9FAFC]'
+                                                        ? 'text-[#3965FF] bg-white/5'
+                                                        : 'text-gray-400 hover:text-white hover:bg-white/5'
                                                         }`}
                                                 >
                                                     {opt.label}
@@ -294,8 +294,8 @@ const LeadGeneration: React.FC = () => {
                                     <div
                                         onClick={() => setSelectedSearchId(search.id)}
                                         className={`w-full p-4 rounded-2xl transition-all cursor-grab active:cursor-grabbing ${selectedSearchId === search.id
-                                            ? 'bg-[#F4F7FE] ring-1 ring-[#3965FF]/20'
-                                            : 'hover:bg-[#F4F7FE]/50'
+                                            ? 'bg-white/10 ring-1 ring-[#3965FF]/50 border border-white/5'
+                                            : 'hover:bg-white/5 border border-transparent'
                                             } ${draggedIdx === i ? 'opacity-40' : ''}`}
                                     >
                                         {/* Top row: icon + name + actions */}
@@ -310,8 +310,8 @@ const LeadGeneration: React.FC = () => {
                                                 {i % 3 === 0 ? '🎯' : i % 3 === 1 ? '🚀' : '🔥'}
                                             </div>
                                             <div className="flex-1 min-w-0">
-                                                <h4 className="text-sm font-bold truncate">{search.business_type}</h4>
-                                                <p className="text-xs text-[#707EAE] font-medium truncate">{search.location}</p>
+                                                <h4 className="text-sm font-bold text-white truncate">{search.business_type}</h4>
+                                                <p className="text-xs text-gray-400 font-medium truncate">{search.location}</p>
                                             </div>
                                             <div className="flex items-center gap-2 flex-shrink-0">
                                                 {search.status === 'completed' && <CheckCircle2 size={16} className="text-[#34D399]" />}
@@ -334,16 +334,16 @@ const LeadGeneration: React.FC = () => {
 
                                         {/* Run details row */}
                                         <div className="flex items-center gap-2 mt-2.5 ml-[4.25rem] flex-wrap">
-                                            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#707EAE] bg-[#F4F7FE] px-2 py-0.5 rounded-full">
+                                            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-gray-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
                                                 <Clock size={10} />
                                                 {formatRelativeDate(search.created_at)}
                                             </span>
-                                            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#707EAE] bg-[#F4F7FE] px-2 py-0.5 rounded-full">
+                                            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-gray-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
                                                 <Users size={10} />
                                                 {search.leads_count ?? 0} leads
                                             </span>
                                             {search.lead_type && (
-                                                <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#707EAE] bg-[#F4F7FE] px-2 py-0.5 rounded-full">
+                                                <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-gray-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
                                                     <Tag size={10} />
                                                     {shortenLeadType(search.lead_type)}
                                                 </span>
@@ -359,7 +359,7 @@ const LeadGeneration: React.FC = () => {
                             ))}
 
                             {displayedSearches.length === 0 && (
-                                <div className="text-center py-8 text-[#A3AED0] text-sm font-medium">
+                                <div className="text-center py-8 text-gray-400 text-sm font-medium">
                                     {searchQuery ? 'No runs match your search' : 'No runs yet — start a new hunt!'}
                                 </div>
                             )}
@@ -369,10 +369,10 @@ const LeadGeneration: React.FC = () => {
 
                 {/* Leads Table */}
                 <div className="col-span-12 lg:col-span-8">
-                    <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-white min-h-[500px]">
+                    <div className="bg-[#0A0F1C]/80 backdrop-blur-xl rounded-[2.5rem] p-8 shadow-sm border border-white/10 min-h-[500px]">
                         <div className="flex items-center justify-between mb-8">
-                            <h3 className="text-xl font-bold">Leads Identified</h3>
-                            <button className="text-[#3965FF] text-sm font-bold flex items-center gap-1">Export CSV <ArrowUpRight size={14} /></button>
+                            <h3 className="text-xl font-bold text-white">Leads Identified</h3>
+                            <button className="text-[#3965FF] text-sm font-bold flex items-center gap-1 hover:text-blue-400 transition-colors">Export CSV <ArrowUpRight size={14} /></button>
                         </div>
                         <LeadsTable searchId={selectedSearchId || '1'} />
                     </div>

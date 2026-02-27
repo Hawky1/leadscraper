@@ -15,7 +15,8 @@ import {
     Bot,
     Mic2,
     Film,
-    AppWindow
+    AppWindow,
+    BarChart3
 } from 'lucide-react'
 
 const AuthenticatedLayout: React.FC = () => {
@@ -44,11 +45,12 @@ const AuthenticatedLayout: React.FC = () => {
             case '/lead-gen': return 'Lead Generation'
             case '/roadmap': return 'AI Agency Roadmap'
             case '/prompt-builder': return 'Website Prompt Builder'
+            case '/seo-analyzer': return 'AI SEO Analyzer'
             case '/objection-handling': return 'Objection Handling'
-            case '/gpts': return 'Custom GPTs'
+            case '/gpts': return 'AI Infrastructure'
             case '/voice-agent': return 'AI Voice Agent'
             case '/sora': return 'Sora 2 Film'
-            case '/app-builder': return 'AI App Builder'
+            case '/app-builder': return 'App Builder Prompt Generator'
             case '/help': return 'Help Center'
             case '/settings': return 'Account Settings'
             default: return 'Project Dashboard'
@@ -56,11 +58,11 @@ const AuthenticatedLayout: React.FC = () => {
     }
 
     return (
-        <div className="flex h-screen bg-[#F4F7FE] text-[#1B2559]">
+        <div className="flex h-screen bg-[#030712] text-white">
             {/* Expanding Sidebar */}
-            <aside className="group w-[100px] hover:w-[300px] border-r border-[#E9EDF7] bg-white hidden md:flex flex-col items-start py-8 z-50 transition-all duration-300 ease-in-out overflow-y-auto no-scrollbar overflow-x-hidden">
+            <aside className="group w-[100px] hover:w-[300px] border-r border-white/10 bg-[#0A0F1C]/80 backdrop-blur-xl hidden md:flex flex-col items-start py-8 z-50 transition-all duration-300 ease-in-out overflow-y-auto custom-scrollbar overflow-x-hidden">
                 <NavLink to="/dashboard" className="flex items-center gap-4 px-6 mb-10 shrink-0 outline-none">
-                    <div className="h-12 w-12 rounded-xl bg-black flex items-center justify-center shadow-lg shadow-black/10 shrink-0">
+                    <div className="h-12 w-12 rounded-xl bg-gradient-to-tr from-[#3965FF] to-[#0031E3] flex items-center justify-center shadow-lg shadow-[#3965FF]/20 shrink-0">
                         <Crosshair className="h-6 w-6 text-white" />
                     </div>
                     <span className="text-xl font-extrabold tracking-tight whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">WebHunt</span>
@@ -71,11 +73,18 @@ const AuthenticatedLayout: React.FC = () => {
                     <SidebarIcon to="/lead-gen" icon={<Crosshair size={22} />} label="Lead Generation" />
                     <SidebarIcon to="/roadmap" icon={<Map size={22} />} label="AI Agency Roadmap" />
                     <SidebarIcon to="/prompt-builder" icon={<Terminal size={22} />} label="Website Prompt Builder" />
-                    <SidebarIcon to="/objection-handling" icon={<PhoneCall size={22} />} label="Cold Call Objection Handling" />
-                    <SidebarIcon to="/gpts" icon={<Bot size={22} />} label="Custom GPTs" />
-                    <SidebarIcon to="/voice-agent" icon={<Mic2 size={22} />} label="AI Voice Agent Builder" />
+                    <SidebarIcon to="/seo-analyzer" icon={<BarChart3 size={22} />} label="AI SEO Analyzer" />
+                    <SidebarIcon to="/gpts" icon={<Bot size={22} />} label="AI Infrastructure" />
+                    <SidebarIcon to="/app-builder" icon={<AppWindow size={22} />} label="App Builder Prompt Generator" />
+
+                    <div className="w-full my-2 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Coming Soon</p>
+                        <div className="h-px bg-white/5" />
+                    </div>
+
                     <SidebarIcon to="/sora" icon={<Film size={22} />} label="Sora 2 Film Prompt Generator" />
-                    <SidebarIcon to="/app-builder" icon={<AppWindow size={22} />} label="AI App Builder Prompt Generator" />
+                    <SidebarIcon to="/voice-agent" icon={<Mic2 size={22} />} label="AI Voice Agent Builder" />
+                    <SidebarIcon to="/objection-handling" icon={<PhoneCall size={22} />} label="Cold Call Objection Handling" />
                 </nav>
 
                 <div className="flex flex-col items-start gap-3 mt-8 shrink-0 w-full px-5">
@@ -88,17 +97,17 @@ const AuthenticatedLayout: React.FC = () => {
                 {/* Top Header */}
                 <header className="h-[100px] flex items-center justify-between px-8 bg-transparent shrink-0">
                     <div>
-                        <p className="text-sm font-medium text-[#707EAE]">Manage and track your projects</p>
+                        <p className="text-sm font-medium text-gray-400">Manage and track your projects</p>
                         <h1 className="text-[34px] font-bold leading-tight">{getPageTitle()}</h1>
                     </div>
 
-                    <div className="flex items-center gap-4 bg-white/70 backdrop-blur-xl p-2.5 rounded-[30px] shadow-sm border border-white/50">
+                    <div className="flex items-center gap-4 bg-[#0A0F1C]/80 backdrop-blur-xl p-2.5 rounded-[30px] border border-white/10 shadow-lg">
                         <div className="relative group">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#A3AED0]" />
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                             <input
                                 type="text"
                                 placeholder="Search Task, Meeting, Projects..."
-                                className="pl-11 pr-4 py-3 bg-[#F4F7FE] rounded-full text-sm font-medium outline-none w-[280px] border-none focus:ring-2 focus:ring-[#3965FF]/20 transition-all font-medium"
+                                className="pl-11 pr-4 py-3 bg-[#030712] rounded-full text-sm font-medium text-white placeholder-gray-500 outline-none w-[280px] border border-white/5 focus:border-[#3965FF]/50 focus:ring-2 focus:ring-[#3965FF]/20 transition-all"
                             />
                         </div>
 
@@ -109,7 +118,7 @@ const AuthenticatedLayout: React.FC = () => {
                         <div className="flex items-center gap-3 pl-2 pr-1 ml-2">
                             <div className="text-right hidden sm:block">
                                 <p className="text-sm font-bold">{isDemoMode ? 'John Smith' : (user?.email?.split('@')[0])}</p>
-                                <p className="text-[11px] font-medium text-[#707EAE]">{isDemoMode ? 'Project manager' : 'WebHunt Pro'}</p>
+                                <p className="text-[11px] font-medium text-gray-400">{isDemoMode ? 'Project manager' : 'WebHunt Pro'}</p>
                             </div>
                             <div className="h-[43px] w-[43px] rounded-full bg-gradient-to-tr from-[#3965FF] to-[#0031E3] flex items-center justify-center text-white font-bold text-sm shadow-md">
                                 <img
@@ -137,8 +146,8 @@ const SidebarIcon = ({ to, icon, label }: { to: string, icon: React.ReactNode, l
     <NavLink
         to={to}
         className={({ isActive }) => `flex items-center gap-4 p-3.5 rounded-2xl transition-all duration-300 w-full group/btn ${isActive
-            ? 'bg-[#1B2559] text-white shadow-xl shadow-black/10'
-            : 'text-[#A3AED0] hover:text-[#1B2559] hover:bg-[#F4F7FE]'
+            ? 'bg-[#3965FF] text-white shadow-lg shadow-[#3965FF]/20'
+            : 'text-gray-400 hover:text-white hover:bg-white/5'
             }`}
     >
         <div className="shrink-0 w-6 flex justify-center">
@@ -151,7 +160,7 @@ const SidebarIcon = ({ to, icon, label }: { to: string, icon: React.ReactNode, l
 )
 
 const HeaderIcon = ({ icon }: { icon: React.ReactNode }) => (
-    <button className="p-2.5 text-[#A3AED0] hover:text-[#1B2559] transition-colors rounded-full hover:bg-[#F4F7FE]">
+    <button className="p-2.5 text-gray-400 hover:text-white transition-colors rounded-full hover:bg-white/5">
         {icon}
     </button>
 )

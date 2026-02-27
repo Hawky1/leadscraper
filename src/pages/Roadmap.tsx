@@ -127,7 +127,7 @@ const Roadmap: React.FC = () => {
                         <span className="text-xs font-bold text-[#707EAE] uppercase tracking-wider">Step {step} of 4</span>
                         <span className="text-xs font-bold text-[#3965FF]">{Math.round((step / 4) * 100)}% Complete</span>
                     </div>
-                    <div className="h-2 w-full bg-[#E9EDF7] rounded-full overflow-hidden">
+                    <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
                         <div
                             className="h-full bg-gradient-to-r from-[#3965FF] to-[#0031E3] transition-all duration-500 ease-out"
                             style={{ width: `${(step / 4) * 100}%` }}
@@ -138,21 +138,21 @@ const Roadmap: React.FC = () => {
 
             {/* Step 1: Niche */}
             {step === 1 && (
-                <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-white">
-                    <div className="h-16 w-16 bg-[#FFEDE1] rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                <div className="bg-[#0A0F1C]/80 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-sm border border-white/10">
+                    <div className="h-16 w-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
                         <Target className="h-8 w-8 text-[#FF5C8E]" />
                     </div>
-                    <h2 className="text-3xl font-bold text-[#1B2559] mb-2">What's your target niche?</h2>
-                    <p className="text-[#707EAE] mb-8 font-medium">Entering a specific niche helps the AI generate a roadmap tailored to real market needs.</p>
+                    <h2 className="text-3xl font-bold text-white mb-2">What's your target niche?</h2>
+                    <p className="text-gray-400 mb-8 font-medium">Entering a specific niche helps the AI generate a roadmap tailored to real market needs.</p>
 
                     <div className="relative group">
-                        <Building2 className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-[#A3AED0] group-focus-within:text-[#3965FF] transition-colors" />
+                        <Building2 className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 group-focus-within:text-[#3965FF] transition-colors" />
                         <input
                             type="text"
                             placeholder="e.g. Real Estate, Dentists, Lawyers..."
                             value={form.targetNiche}
                             onChange={e => setForm(f => ({ ...f, targetNiche: e.target.value }))}
-                            className="w-full bg-[#F4F7FE] border-2 border-transparent focus:border-[#3965FF]/20 focus:bg-white rounded-2xl py-4 pl-14 pr-6 outline-none text-lg font-bold transition-all placeholder:text-[#A3AED0]"
+                            className="w-full bg-white/5 border border-white/10 focus:border-[#3965FF] focus:bg-white/10 text-white rounded-2xl py-4 pl-14 pr-6 outline-none text-lg font-bold transition-all placeholder:text-gray-500"
                         />
                     </div>
 
@@ -160,7 +160,7 @@ const Roadmap: React.FC = () => {
                         <button
                             disabled={!form.targetNiche.trim()}
                             onClick={nextStep}
-                            className="flex items-center gap-2 bg-[#1B2559] text-white px-8 py-4 rounded-2xl font-bold hover:bg-[#0B1539] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-xl shadow-[#1B2559]/20"
+                            className="flex items-center gap-2 bg-[#3965FF] text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-xl shadow-[#3965FF]/20"
                         >
                             Continue <ChevronRight size={20} />
                         </button>
@@ -172,8 +172,8 @@ const Roadmap: React.FC = () => {
             {step === 2 && (
                 <div className="space-y-6">
                     <div className="text-center mb-10">
-                        <h2 className="text-3xl font-bold text-[#1B2559]">What's your primary goal?</h2>
-                        <p className="text-[#707EAE] mt-2 font-medium">Choose the path that best fits your current stage.</p>
+                        <h2 className="text-3xl font-bold text-white">What's your primary goal?</h2>
+                        <p className="text-gray-400 mt-2 font-medium">Choose the path that best fits your current stage.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -181,26 +181,26 @@ const Roadmap: React.FC = () => {
                             title="Quick Cash"
                             description="Fastest time to first dollars. Productized, minimal scope, low friction."
                             icon={<Rocket className="h-6 w-6 text-[#34D399]" />}
-                            bg="bg-[#EBFDF5]"
+                            bg="bg-[#34D399]/10 border border-[#34D399]/20"
                             onClick={() => handleGoalSelect('quick-cash')}
                         />
                         <GoalCard
                             title="Build an Empire"
                             description="Recurring retainer, roadmap of automations, higher pricing, durability."
                             icon={<Building2 className="h-6 w-6 text-[#3965FF]" />}
-                            bg="bg-[#E0E7FF]"
+                            bg="bg-[#3965FF]/10 border border-[#3965FF]/20"
                             onClick={() => handleGoalSelect('empire')}
                         />
                         <GoalCard
                             title="Start from Ground Up"
                             description="Ultra-beginner setup, lowest complexity, safe first client."
                             icon={<GraduationCap className="h-6 w-6 text-[#FEB2B2]" />}
-                            bg="bg-[#FFF5F5]"
+                            bg="bg-[#FEB2B2]/10 border border-[#FEB2B2]/20"
                             onClick={() => handleGoalSelect('ground-up')}
                         />
                     </div>
 
-                    <button onClick={prevStep} className="flex items-center gap-2 text-[#707EAE] font-bold hover:text-[#1B2559] transition-colors pt-4">
+                    <button onClick={prevStep} className="flex items-center gap-2 text-gray-400 font-bold hover:text-white transition-colors pt-4">
                         <ArrowLeft size={18} /> Go Back
                     </button>
                 </div>
@@ -208,68 +208,68 @@ const Roadmap: React.FC = () => {
 
             {/* Step 3: Details */}
             {step === 3 && (
-                <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-white">
-                    <div className="h-16 w-16 bg-[#F4F7FE] rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                <div className="bg-[#0A0F1C]/80 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-sm border border-white/10">
+                    <div className="h-16 w-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
                         <Sparkles className="h-8 w-8 text-[#3965FF]" />
                     </div>
-                    <h2 className="text-3xl font-bold text-[#1B2559] mb-2">Almost there!</h2>
-                    <p className="text-[#707EAE] mb-10 font-medium">A few more details to calibrate your business plan.</p>
+                    <h2 className="text-3xl font-bold text-white mb-2">Almost there!</h2>
+                    <p className="text-gray-400 mb-10 font-medium">A few more details to calibrate your business plan.</p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="space-y-3">
-                            <label className="text-sm font-bold ml-1">Experience Level</label>
+                            <label className="text-sm font-bold ml-1 text-white">Experience Level</label>
                             <div className="relative">
-                                <GraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#A3AED0]" />
+                                <GraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
                                 <select
                                     value={form.experience}
                                     onChange={e => setForm(f => ({ ...f, experience: e.target.value }))}
-                                    className="w-full bg-[#F4F7FE] rounded-2xl py-4 pl-12 pr-6 outline-none font-bold text-sm appearance-none border-2 border-transparent focus:border-[#3965FF]/20"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-6 outline-none font-bold text-sm appearance-none focus:border-[#3965FF] text-white"
                                 >
-                                    <option value="">Select Level</option>
-                                    <option value="beginner">Total Beginner</option>
-                                    <option value="intermediate">Some Tech/Sales Skill</option>
-                                    <option value="advanced">Expert / Agency Pro</option>
+                                    <option value="" className="bg-[#0A0F1C] text-white">Select Level</option>
+                                    <option value="beginner" className="bg-[#0A0F1C] text-white">Total Beginner</option>
+                                    <option value="intermediate" className="bg-[#0A0F1C] text-white">Some Tech/Sales Skill</option>
+                                    <option value="advanced" className="bg-[#0A0F1C] text-white">Expert / Agency Pro</option>
                                 </select>
                             </div>
                         </div>
 
                         <div className="space-y-3">
-                            <label className="text-sm font-bold ml-1">Initial Budget</label>
+                            <label className="text-sm font-bold ml-1 text-white">Initial Budget</label>
                             <div className="relative">
-                                <Wallet className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#A3AED0]" />
+                                <Wallet className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
                                 <select
                                     value={form.budget}
                                     onChange={e => setForm(f => ({ ...f, budget: e.target.value }))}
-                                    className="w-full bg-[#F4F7FE] rounded-2xl py-4 pl-12 pr-6 outline-none font-bold text-sm appearance-none border-2 border-transparent focus:border-[#3965FF]/20"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-6 outline-none font-bold text-sm appearance-none focus:border-[#3965FF] text-white"
                                 >
-                                    <option value="">Select Budget</option>
-                                    <option value="zero">$0 (Sweat Equity)</option>
-                                    <option value="low">Under $500</option>
-                                    <option value="high">$500 - $2,000+</option>
+                                    <option value="" className="bg-[#0A0F1C] text-white">Select Budget</option>
+                                    <option value="zero" className="bg-[#0A0F1C] text-white">$0 (Sweat Equity)</option>
+                                    <option value="low" className="bg-[#0A0F1C] text-white">Under $500</option>
+                                    <option value="high" className="bg-[#0A0F1C] text-white">$500 - $2,000+</option>
                                 </select>
                             </div>
                         </div>
 
                         <div className="space-y-3 md:col-span-2">
-                            <label className="text-sm font-bold ml-1">Weekly Time Commitment</label>
+                            <label className="text-sm font-bold ml-1 text-white">Weekly Time Commitment</label>
                             <div className="relative">
-                                <Clock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#A3AED0]" />
+                                <Clock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
                                 <select
                                     value={form.timeCommitment}
                                     onChange={e => setForm(f => ({ ...f, timeCommitment: e.target.value }))}
-                                    className="w-full bg-[#F4F7FE] rounded-2xl py-4 pl-12 pr-6 outline-none font-bold text-sm appearance-none border-2 border-transparent focus:border-[#3965FF]/20"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-6 outline-none font-bold text-sm appearance-none focus:border-[#3965FF] text-white"
                                 >
-                                    <option value="">Select Hours</option>
-                                    <option value="part-time">5-10 Hours (Side Hustle)</option>
-                                    <option value="half-time">10-25 Hours</option>
-                                    <option value="full-time">40+ Hours (Full Power)</option>
+                                    <option value="" className="bg-[#0A0F1C] text-white">Select Hours</option>
+                                    <option value="part-time" className="bg-[#0A0F1C] text-white">5-10 Hours (Side Hustle)</option>
+                                    <option value="half-time" className="bg-[#0A0F1C] text-white">10-25 Hours</option>
+                                    <option value="full-time" className="bg-[#0A0F1C] text-white">40+ Hours (Full Power)</option>
                                 </select>
                             </div>
                         </div>
                     </div>
 
                     <div className="mt-12 flex items-center justify-between">
-                        <button onClick={prevStep} className="flex items-center gap-2 text-[#707EAE] font-bold hover:text-[#1B2559] transition-colors">
+                        <button onClick={prevStep} className="flex items-center gap-2 text-gray-400 font-bold hover:text-white transition-colors">
                             <ArrowLeft size={18} /> Go Back
                         </button>
                         <button
@@ -285,17 +285,17 @@ const Roadmap: React.FC = () => {
 
             {/* Step 4: Summary & Generate */}
             {step === 4 && (
-                <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-white text-center">
-                    <div className="h-20 w-20 bg-black rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl">
+                <div className="bg-[#0A0F1C]/80 backdrop-blur-xl p-10 rounded-[2.5rem] shadow-sm border border-white/10 text-center">
+                    <div className="h-20 w-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl">
                         <Rocket className="h-10 w-10 text-white" />
                     </div>
-                    <h2 className="text-3xl font-bold text-[#1B2559] mb-4">Ready to Launch?</h2>
-                    <p className="text-[#707EAE] mb-10 max-w-md mx-auto font-medium">
-                        You're starting an <span className="text-[#1B2559] font-bold capitalize">{form.goal?.replace('-', ' ')}</span> agency
-                        for <span className="text-[#1B2559] font-bold">{form.targetNiche}</span>.
+                    <h2 className="text-3xl font-bold text-white mb-4">Ready to Launch?</h2>
+                    <p className="text-gray-400 mb-10 max-w-md mx-auto font-medium">
+                        You're starting an <span className="text-white font-bold capitalize">{form.goal?.replace('-', ' ')}</span> agency
+                        for <span className="text-white font-bold">{form.targetNiche}</span>.
                     </p>
 
-                    <div className="bg-[#F4F7FE] p-6 rounded-2xl mb-10 inline-block text-left border border-white">
+                    <div className="bg-white/5 p-6 rounded-2xl mb-10 inline-block text-left border border-white/10">
                         <div className="space-y-4">
                             <SummaryItem icon={<CheckCircle2 size={16} />} label="Niche" value={form.targetNiche} />
                             <SummaryItem icon={<CheckCircle2 size={16} />} label="Path" value={form.goal!} />
@@ -322,7 +322,7 @@ const Roadmap: React.FC = () => {
                             )}
                         </button>
                         {!isGenerating && (
-                            <button onClick={prevStep} className="text-[#707EAE] font-bold py-2 hover:text-[#1B2559] transition-colors">
+                            <button onClick={prevStep} className="text-gray-400 font-bold py-2 hover:text-white transition-colors">
                                 Change Details
                             </button>
                         )}
@@ -334,34 +334,34 @@ const Roadmap: React.FC = () => {
             {step === 5 && generatedPlan && (
                 <div className="space-y-8 animate-in zoom-in-95 duration-700">
                     <div className="flex items-center justify-between">
-                        <h2 className="text-3xl font-extrabold text-[#1B2559]">Your Agency Roadmap</h2>
+                        <h2 className="text-3xl font-extrabold text-white">Your Agency Roadmap</h2>
                         <button
                             onClick={() => setStep(1)}
-                            className="bg-white px-6 py-2.5 rounded-xl text-sm font-bold border border-[#E9EDF7] hover:bg-[#F4F7FE] transition-all"
+                            className="bg-white/5 px-6 py-2.5 rounded-xl text-sm font-bold border border-white/10 text-white hover:bg-white/10 transition-all"
                         >
                             New Roadmap
                         </button>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <StatBox icon={<Users className="text-[#3965FF]" />} label="Niche Focus" value={form.targetNiche} />
-                        <StatBox icon={<PieChart className="text-[#34D399]" />} label="Agency Strategy" value={form.goal!} />
-                        <StatBox icon={<Clock className="text-[#FFB81C]" />} label="Build Time" value="4-6 Weeks" />
+                        <StatBox icon={<Users className="text-[#3965FF]" />} label="Niche Focus" value={form.targetNiche} bg="bg-[#3965FF]/10 text-[#3965FF]" />
+                        <StatBox icon={<PieChart className="text-[#34D399]" />} label="Agency Strategy" value={form.goal!} bg="bg-[#34D399]/10 text-[#34D399]" />
+                        <StatBox icon={<Clock className="text-[#FFB81C]" />} label="Build Time" value="4-6 Weeks" bg="bg-[#FFB81C]/10 text-[#FFB81C]" />
                     </div>
 
                     <div className="space-y-6">
                         {generatedPlan.phases.map((phase: any, i: number) => (
-                            <div key={i} className="bg-white rounded-[2rem] p-8 shadow-sm border border-white flex flex-col md:flex-row gap-8 relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 h-40 w-40 bg-[#F4F7FE] rounded-full -mr-20 -mt-20 group-hover:bg-[#E0E7FF] transition-colors" />
+                            <div key={i} className="bg-[#0A0F1C]/80 backdrop-blur-xl rounded-[2rem] p-8 shadow-sm border border-white/10 flex flex-col md:flex-row gap-8 relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 h-40 w-40 bg-white/5 border border-white/10 rounded-full -mr-20 -mt-20 group-hover:bg-[#3965FF]/10 transition-colors" />
 
                                 <div className="flex-shrink-0">
-                                    <div className="h-14 w-14 bg-[#1B2559] text-white rounded-2xl flex items-center justify-center text-xl font-bold border-4 border-[#F4F7FE] relative z-10">
+                                    <div className="h-14 w-14 bg-white/10 text-white rounded-2xl flex items-center justify-center text-xl font-bold border border-white/10 relative z-10">
                                         {i + 1}
                                     </div>
                                 </div>
 
                                 <div className="flex-1 relative z-10">
-                                    <h3 className="text-xl font-extrabold text-[#1B2559] mb-6 flex items-center gap-2">
+                                    <h3 className="text-xl font-extrabold text-white mb-6 flex items-center gap-2">
                                         <Lightbulb className="h-5 w-5 text-[#FFB81C]" />
                                         {phase.title}
                                     </h3>
@@ -370,11 +370,11 @@ const Roadmap: React.FC = () => {
                                         {phase.tasks.map((task: string, j: number) => (
                                             <div key={j} className="flex gap-4 items-start group/task">
                                                 <div className="mt-1 flex-shrink-0">
-                                                    <div className="h-5 w-5 rounded-full border-2 border-[#E9EDF7] group-hover/task:border-[#3965FF] bg-white flex items-center justify-center transition-all">
+                                                    <div className="h-5 w-5 rounded-full border-2 border-white/10 group-hover/task:border-[#3965FF] bg-white/5 flex items-center justify-center transition-all">
                                                         <div className="h-2 w-2 rounded-full bg-[#3965FF] opacity-0 group-hover/task:opacity-100" />
                                                     </div>
                                                 </div>
-                                                <p className="text-[#4A5568] font-medium leading-relaxed group-hover/task:text-[#1B2559] transition-colors">
+                                                <p className="text-gray-400 font-medium leading-relaxed group-hover/task:text-white transition-colors">
                                                     {task}
                                                 </p>
                                             </div>
@@ -409,13 +409,13 @@ const Roadmap: React.FC = () => {
 const GoalCard = ({ title, description, icon, bg, onClick }: any) => (
     <button
         onClick={onClick}
-        className="text-left bg-white p-8 rounded-3xl border-2 border-[#E9EDF7] hover:border-[#3965FF] hover:translate-y-[-8px] group transition-all duration-300 shadow-sm hover:shadow-2xl h-full flex flex-col"
+        className="text-left bg-[#0A0F1C]/80 backdrop-blur-xl p-8 rounded-3xl border border-white/10 hover:border-[#3965FF] hover:translate-y-[-8px] group transition-all duration-300 shadow-sm hover:shadow-2xl hover:shadow-[#3965FF]/10 h-full flex flex-col"
     >
         <div className={cn("h-14 w-14 rounded-2xl flex items-center justify-center mb-6 shrink-0 group-hover:scale-110 transition-transform", bg)}>
             {icon}
         </div>
-        <h3 className="text-xl font-bold text-[#1B2559] mb-3">{title}</h3>
-        <p className="text-sm font-medium text-[#707EAE] leading-relaxed flex-1">{description}</p>
+        <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+        <p className="text-sm font-medium text-gray-400 leading-relaxed flex-1">{description}</p>
         <div className="mt-6 flex items-center gap-2 text-[#3965FF] font-extrabold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
             Select Plan <ChevronRight size={14} />
         </div>
@@ -425,18 +425,18 @@ const GoalCard = ({ title, description, icon, bg, onClick }: any) => (
 const SummaryItem = ({ icon, label, value }: any) => (
     <div className="flex items-center gap-3">
         <div className="text-[#34D399]">{icon}</div>
-        <span className="text-xs font-bold text-[#707EAE] uppercase w-20">{label}:</span>
-        <span className="text-xs font-bold text-[#1B2559] truncate max-w-[150px] capitalize">{value}</span>
+        <span className="text-xs font-bold text-gray-400 uppercase w-20">{label}:</span>
+        <span className="text-xs font-bold text-white truncate max-w-[150px] capitalize">{value}</span>
     </div>
 )
 
-const StatBox = ({ icon, label, value }: any) => (
-    <div className="bg-white/50 backdrop-blur-sm p-6 rounded-2xl border border-white flex flex-col items-center text-center shadow-sm">
-        <div className="h-10 w-10 bg-white rounded-xl flex items-center justify-center shadow-sm mb-3">
+const StatBox = ({ icon, label, value, bg = "bg-white/10 border border-white/10" }: any) => (
+    <div className="bg-[#0A0F1C]/80 backdrop-blur-sm p-6 rounded-2xl border border-white/10 flex flex-col items-center text-center shadow-sm">
+        <div className={cn("h-10 w-10 rounded-xl flex items-center justify-center shadow-sm mb-3", bg)}>
             {icon}
         </div>
-        <span className="text-[10px] font-bold text-[#707EAE] uppercase tracking-wider mb-1">{label}</span>
-        <span className="text-sm font-extrabold text-[#1B2559] capitalize">{value}</span>
+        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">{label}</span>
+        <span className="text-sm font-extrabold text-white capitalize">{value}</span>
     </div>
 )
 
